@@ -21,11 +21,12 @@ def test_request_API_exito(monkeypatch):
     assert respuesta.status_code == 200
     assert respuesta.text == "data_ejemplo"    
     
-def test_request_API_fallo():
-    mockedResponse = Mock(spec=requests.models.Response)
-    mockedResponse.status_code = 404
-    
-    assert mockedResponse.status_code == 404
+def test_request_API_fallo(monkeypatch):
+    mockedResponse = Mock(spec=requests.models.Response,status_code=404)
+    monkeypatch.setattr(requests, "get", lambda *args, **kwargs: mockedResponse)
+    respuesta = request_API("url",params="parametros")
+    assert respuesta.status_code == 404
+   
 
 
 def test_data_API_to_df():
