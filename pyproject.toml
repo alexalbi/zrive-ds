@@ -18,6 +18,10 @@ pytest = "^7.4.0"
 scikit-learn = "^1.4.1.post1"
 ipykernel = "^6.29.5"
 seaborn = "^0.13.2"
+boto3 = "^1.35.33"
+python-dotenv = "^1.0.1"
+pyarrow = "^17.0.0"
+nbconvert = "^7.16.4"
 
 
 [build-system]
